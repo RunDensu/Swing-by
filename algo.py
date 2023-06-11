@@ -13,18 +13,6 @@ from PyQt5.uic import loadUiType
 #Lade das mit dem Qt Designer erstellte Benutzerinterface.
 MainWindow = loadUiType('MainWindow.ui')[0]
 
-#Schrittweitensteuerung aber ohne Implementierung
-def schritt(dt, rP, rS, vS, n, d):
-    vnorm = np.linalg.norm(vS[:,n+1])                  #Betrag der Geschw. an der n+1-ten Iteration
-    dt = (1 / vnorm) * np.linalg.norm(vS[:,1])         #v_n > v_0 => dt wird kleiner 
-    
-    if dt > 3600:
-        dt = 3600
-    elif dt < 3600*0.01:
-        dt = 3600*0.01
-        
-    return dt
-
 #Expliziter Euler
 def euler(G, mP, mS, r0P, r0S, v0P, v0S, t, dt):
     
